@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+.log {
+    font-family: 'Raleway', sans-serif;
+    display: flex;
+    justify-content: flex-start;
+    background-image: linear-gradient( 115deg, rgba(44, 62, 80,0.3), rgba(91, 100, 103,0.3)  ), url(./images/homeimage.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.log .text, .log .box {
+    padding: 7rem 0;
+}
+
+.log .text {
+    font-weight: 300px;
+    text-align: center;
+    margin-left: 10%;
+}
+
+.log .box {
+    margin-left: 40%;
+}
+
+.log .text h1 {
+    font-family: 'Kaushan Script', cursive;
+    font-size: 6rem;
+    color: #fff;
+    font-weight: 500;
+}
+
+.log .text p {
+    margin-top: 2rem;
+    font-size: 1.2rem;
+    color: #fff;
+    font-weight: 300;
+}
+
+.log .text p a {
+    color: #fff;
+    font-weight: 700;
+}
+
+.log .form {
+    background: transparent;
+    color: #fff;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+}
+
+.log input {
+    font-size: 1.15rem;
+    border-radius: 5px;
+    background-color: transparent;
+    margin: 1rem 0;
+    padding: 0.7rem;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    border-bottom: 1px solid #ccc;
+    font-family: 'Raleway', sans-serif;
+}
+
+.log input::placeholder {
+    color: #ccc;
+    font-size: 1rem;
+}
+
+.log .button {
+    background: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.log .button:hover {
+    background: #fff;
+    transition: all 0.25s ease-out;
+    color: rgba(255, 69, 0,0.6);
+}
+.log .text a:hover{
+    color: rgba(255, 69, 0,0.6);
+    transition: all 0.25s ease-out;
+}
