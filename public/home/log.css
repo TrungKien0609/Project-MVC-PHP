@@ -1,16 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+* {
+    letter-spacing: 1.3px;
+}
+
 .log {
     font-family: 'Raleway', sans-serif;
     display: flex;
     justify-content: flex-start;
-    background-image: linear-gradient( 115deg, rgba(44, 62, 80,0.3), rgba(91, 100, 103,0.3)  ), url(./images/homeimage.jpg);
+    background-image: linear-gradient( 115deg, rgba(44, 62, 80, 0.3), rgba(91, 100, 103, 0.3)), url(./images/homeimage.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    height: 70vh;
 }
 
 .log .text, .log .box {
-    padding: 7rem 0;
+    padding-bottom: 6rem;
+    padding-top: 6rem;
 }
 
 .log .text {
@@ -52,7 +58,7 @@
 }
 
 .log input {
-    font-size: 1.15rem;
+    font-size: 1rem;
     border-radius: 5px;
     background-color: transparent;
     margin: 1rem 0;
@@ -65,25 +71,109 @@
     font-family: 'Raleway', sans-serif;
 }
 
+.log input:focus{
+    background-color: #333;
+}
+.log input:focus > .instruction{
+    display: block;
+}
 .log input::placeholder {
+    font-style: italic;
     color: #ccc;
     font-size: 1rem;
 }
 
-.log .button {
-    background: transparent;
-    border: 1px solid #fff;
+.log .item {
+    position: relative;
+}
+.log .item i{
+    position: absolute;
     color: #fff;
-    font-size: 18px;
-    cursor: pointer;
+    font-size: 0.8rem;
+    padding: 0.35rem;
+    background-color: #228B22;
+    top: 35%;
+    left: 100%;
+    border-radius: 50%;
+    display: none;
+}
+.log .instruction {
+    margin-right: 2rem;
+    position:absolute;
+    border-radius: 5px;
+    top: 20%;
+    right: 100%;
+    width: 7rem;
+    font-size: 0.8rem;
+    letter-spacing: 1.1px;
+    padding: 10px;
+    color: #333;
+    font-family: sans-serif;
+    background-color: transparent;
+    background-color: #fff;
+    word-wrap: break-word;
+    font-style: italic;
+    display: none;
+}
+.log .instruction.active{
+    display: block;
+}
+.log .instruction::before {
+    content: "";
+    top: 15%;
+    left: 100%;
+    transform: translate(0,-20%);
+    position: absolute;
+    border-top: 10px solid transparent;
+    border-left: 10px solid #fff;
+    border-bottom: 10px solid transparent;
+    width: 0;
+    height: 0;
 }
 
+.log .button {
+    background: transparent;
+    border: 1px solid #ccc;
+    color: #ccc;
+    font-size: 18px;
+    cursor: pointer; 
+    pointer-events: none;
+    
+}
+.log .button.login{
+    pointer-events: auto;
+    color: #fff;
+    border: 1px solid #fff;
+}
 .log .button:hover {
-    background: #fff;
-    transition: all 0.25s ease-out;
-    color: rgba(255, 69, 0,0.6);
-}
-.log .text a:hover{
-    color: rgba(255, 69, 0,0.6);
+    background: rgba(255, 255, 255,0.3);
     transition: all 0.25s ease-out;
 }
+.log .text a:hover {
+    color: rgba(255, 69, 0, 0.6);
+    transition: all 0.25s ease-out;
+}
+
+.log .form .validate {
+    margin-left: 0.7rem;
+    display: block;
+    font-size: 0.8rem;
+    color: #f10000;
+    letter-spacing: 1.2px;
+    margin-top: -0.5rem;
+    font-style: i;
+}
+
+.log .form .validate i {
+    margin-right: 0.2rem;
+}
+
+/* signup */
+.signup .box{
+    padding: 0;
+    margin-top: 1.7rem;
+}
+.signup .text{
+    margin-top: 1.5rem;
+}
+

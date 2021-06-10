@@ -1,7 +1,7 @@
 <?php
 class Database
 {
-    private $conn;
+    public $conn;
     private $server = DB_HOST;
     private $username = DB_USER;
     private $password = DB_PASS;
@@ -31,24 +31,32 @@ class Database
         //     }
         //     return false;
         // }
-        $update_row = $this->conn->query($query) or
+        $result = $this->conn->query($query) or
             die($this->conn->error . __LINE__);
-        if ($update_row) {
-            return $update_row;
+        if ($result->num_rows > 0) {
+            return $result;
         } else {
             return false;
         }
     }
-    public function write($query, $data = array())
+    public function write($query)
     {
+        $row = $this->conn->query($query) or die($this->conn->error . __LINE__);
+        if ($row) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
+    public function update($query)
+    {
+        $row  = $this->conn->query($query) or die($this->conn->error . __LINE__);
+        return $row;
     }
 }
-$db = new Database();
-$data = $db->read('SHOW COLUMNS FROM users');
-while($row = mysqli_fetch_assoc($data)){
-    echo "<pre>";
-    print_r($row['Field']);
-    echo "</pre>";
-}
+// $db = new Database();
+// $data = $db->read('SHOW COLUMNS FROM users');
 
-
+// echo "<pre>";
+// print_r($data);
+// echo "</pre>";

@@ -4,6 +4,6 @@
             //    $model = $this->linkmodel("getsv");
             //    $model_fucn = $model->print();
                $this->linkview("about",["title" => "About"]);
-           }
+        }
     }
 ?>

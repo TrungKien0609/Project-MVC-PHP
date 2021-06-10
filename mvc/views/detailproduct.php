@@ -502,7 +502,6 @@ require_once "./mvc/views/include/header.php";
     <p>Best experience for you</p>
     <p>&copy; 2021</p>
   </div>
-  <script src="<?= ASSETS?>src/pages/product1.js"></script>
+  <script src="<?= ASSETS?>src/pages/product.js"></script>
 </body>
-
 </html>

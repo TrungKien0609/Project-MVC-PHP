@@ -3,7 +3,7 @@ class rout
 {
     private $controler = "home";
     private $action = "default";
-    private $para = [];
+    private $param = [];
     public function __construct()
     {
         $arr = $this->geturl();
@@ -19,8 +19,8 @@ class rout
             unset($arr[1]);
         }
         $this->param = $arr ? array_values($arr) : [];
+        call_user_func_array([new $this->controler, $this->action], $this->param);
         
-        call_user_func_array([new $this->controler, $this->action], $this->para);
     }
     function geturl()
     {
