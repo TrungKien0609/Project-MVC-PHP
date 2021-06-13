@@ -48,10 +48,19 @@ class Database
             return false;
         }
     }
+    public function insert($query)
+    {
+        $row  = $this->conn->query($query) or die($this->conn->error . __LINE__);
+        if($this->conn->affected_rows === 1)
+        return $row;
+        return false;
+    }
     public function update($query)
     {
         $row  = $this->conn->query($query) or die($this->conn->error . __LINE__);
+        if($this->conn->affected_rows === 1)
         return $row;
+        return false;
     }
 }
 // $db = new Database();

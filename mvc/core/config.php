@@ -10,6 +10,7 @@ $path = $_SERVER['REQUEST_SCHEME'] . "://" . $_SERVER['SERVER_NAME'] . $_SERVER[
 $path = str_replace("index.php", "", $path);
 define("ROOT", $path);
 define("ASSETS", $path . "public/home/");
+define("ADMIN", $path . "public/admin/");
 
 //    if(DEBUG){
 //        ini_set('display_errors',1);

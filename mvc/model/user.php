@@ -42,10 +42,10 @@ class user extends Database
                 'userID' => $url_address,
                 'useremail' => $email
             ];
-            $query = "INSERT INTO users (url_address,name,email,password,date,rank) VALUE ('$url_address','$name','$email',
+            $query = "INSERT INTO users (url_address,name,email,password,date,rank) VALUES ('$url_address','$name','$email',
                 '$password','$date','$rank')";
             $db = $this->write($query);
-            if ($db) {
+            if ($db){
                 return ['result' => "success"];
             }
         }
@@ -102,9 +102,9 @@ class user extends Database
         $email = trim($post['email']);
         $password = trim($post['password']);
         $password = hash('sha1', $password);
-        $query = " SELECT * FROM  users WHERE email = '$email' AND password = '$password'";
+        $query = " SELECT * FROM  users WHERE email = '$email' AND password = '$password' AND rank = 'customer'";
         $db = $this->read($query);
-        if ($db) {
+        if ($db){
             $row = mysqli_fetch_assoc($db);
             $_SESSION["userinfor"] = [
                 'first_character' => strtoupper(substr($row['name'], 0, 1)),
@@ -113,7 +113,6 @@ class user extends Database
                 'useremail' => $row['email'],
                 'userImage' => $row['image']
             ];
-
             header("Location:" . ROOT . "Home");
         } else {
             return ['error' => "Tài khoản hoặc mật khẩu không chính xác"];
@@ -167,6 +166,7 @@ class user extends Database
     }
     function vn_to_str($str)
     {
+        
 
         $unicode = array(
 
