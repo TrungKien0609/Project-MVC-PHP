@@ -51,20 +51,26 @@ class Database
     public function insert($query)
     {
         $row  = $this->conn->query($query) or die($this->conn->error . __LINE__);
-        if($this->conn->affected_rows === 1)
+        if($this->conn->affected_rows == 1)
         return $row;
         return false;
     }
     public function update($query)
     {
         $row  = $this->conn->query($query) or die($this->conn->error . __LINE__);
-        if($this->conn->affected_rows === 1)
+        if($this->conn->affected_rows == 1)
+        return $row;
+        return false;
+    }
+    public function delete($query)
+    {
+        $row  = $this->conn->query($query) or die($this->conn->error . __LINE__);
+        if($this->conn->affected_rows == 1)
         return $row;
         return false;
     }
 }
-// $db = new Database();
-// $data = $db->read('SHOW COLUMNS FROM users');
+
 
 // echo "<pre>";
 // print_r($data);

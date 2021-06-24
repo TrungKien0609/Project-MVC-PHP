@@ -267,6 +267,9 @@ Navbar
   .nav-center .nav-logo {
     display: none;
   }
+  footer{
+    margin: 0.5rem 0;
+  }
 }
 
 @media screen and (min-width: 800px) {
@@ -314,7 +317,7 @@ Hero
 */
 
 .hero {
-  min-height: 100vh;
+  height: 105vh;
   margin-top: -6rem;
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(./images/homeimage.jpg) center/cover;
   display: grid;
@@ -388,7 +391,6 @@ Sidebar
 }
 
 .footer1 p {
-  line-height: 2.5rem;
   font-size: 1.25rem;
   color: #B0C4DE;
   margin: 0;
@@ -620,7 +622,7 @@ Title
 .rating-area {
   display: flex;
   justify-content: flex-start;
-  height: 2rem;
+  height: 1.5rem;
 }
 
 .rating-amout {
@@ -714,32 +716,38 @@ product
   opacity: 1;
 }
 
-.product footer {
+.product .infor {
   padding: 0.75rem 0;
   text-align: left;
 }
 
 .product-name {
-  margin-bottom: 0.25rem;
+  margin: 0;
   text-transform: capitalize;
   letter-spacing: var(--spacing);
+  color: #333;
+  font-weight: bold;
+  font-family: sans-serif ;
 }
 
 .product-price {
   margin: 0;
   margin-bottom: 0;
   color: var(--clr-grey-3);
-  font-weight: 700;
+  font-weight: normal;
+  font-style: italic;
+  margin-top: 0.05rem;
 }
 
-.product-price span {
+.product-price span{
   text-transform: none;
   text-decoration: underline;
   font-size: 1.1rem;
   margin-left: 0.3rem;
+  font-weight: normal;
 }
 
-.featured-center {
+.category-center {
   margin: 3rem auto 2rem auto;
   display: grid;
   gap: 1rem;
@@ -747,22 +755,24 @@ product
   position: relative;
 }
 
-.featured .btn {
+.category .btn {
   display: block;
   width: 11rem;
   margin: 0 auto;
   text-align: center;
 }
-
+footer{
+  margin: 0.5rem 0;
+}
 @media screen and (min-width: 992px) {
-  .featured-center {
+  .category-center {
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
 }
 
 @media screen and (min-width: 1200px) {
-  .featured-center {
+  .category-center {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
   }
@@ -815,6 +825,11 @@ Products Page
   position: relative;
 }
 
+.product-header{
+  display: block;
+  width: 100%;
+  text-align: center;
+}
 .filters-container {
   position: sticky;
   top: 1rem;
@@ -836,8 +851,11 @@ Products Page
 .search-input::placeholder {
   text-transform: capitalize;
 }
-
-.company-btn {
+.categories{
+  padding-left: 0.5rem;
+}
+.category-btn {
+  position: relative;
   display: block;
   margin: 0.25em 0;
   padding: 0.25rem;
@@ -847,13 +865,35 @@ Products Page
   letter-spacing: var(--spacing);
   color: var(--clr-grey-5);
   cursor: pointer;
-  transition: var(--transition);
+  
 }
-
-.company-btn:hover {
-  color: var(--clr-grey-3);
+.category-btn::after{
+  border-style: solid;
+	border-width: 0.25rem 0.25rem 0 0;
+	content: '';
+	display: inline-block;
+	height: 0.7rem;
+	left: 80%;
+	transform: rotate(45deg);
+	position: absolute;
+	top: 40%;
+	vertical-align: top;
+	width: 0.7rem;
+  display: none;
 }
-
+.category-btn:hover {
+  transition: 0.25s ease-out;
+  color: orange;
+  font-weight: 500;
+}
+.category-btn.active{
+  font-weight: 600;
+  color: #2a3342;
+}
+.category-btn.active::after{
+  display: block;
+  
+}
 .price-filter {
   background: var(--clr-grey-5) !important;
   color: var(--clr-grey-5);
@@ -881,9 +921,7 @@ Products Page
   .products-container .product-name {
     font-size: 0.85rem;
   }
-  .products-container .product-price {
-    font-size: 0.85rem;
-  }
+
 }
 
 @media screen and (min-width: 1170px) {
@@ -1271,3 +1309,37 @@ Single Product Page
     font-size: 12px;
   }
 }
+.pagination {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  margin-top: 1.5rem;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  width: 100%;
+  font-size: 0.9rem;
+}
+
+.pagination a {
+  color: #333;
+  padding: 0.4rem 0.8rem;
+  text-decoration: none;
+  transition: background-color .3s;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  margin-right: 0.6rem;
+}
+.pagination a.prev,.pagination a.next{
+  padding: 0;
+}
+.pagination a i{
+  padding:  0.6rem 0.8rem;
+}
+
+.pagination a.active {
+  background-color: #2a3342;
+  color: white;
+  border: 1px solid #2a3342;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}

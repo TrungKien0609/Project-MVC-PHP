@@ -4,8 +4,7 @@ class admin extends connect_M_V
     function default()
     {
         if (isset($_SESSION['admin'])) {
-            $data['title'] = "ProductList";
-            $this->linkview("admin/product_list", $data);
+            $this->ProductList();
         } else {
             $data['title'] = "Login";
             if ($_SERVER['REQUEST_METHOD'] == "POST") {
@@ -23,21 +22,35 @@ class admin extends connect_M_V
     function ProductList()
     {
         $data['title'] = "ProductList";
-        //    $model = $this->linkmodel("getsv");
-        //    $model_fucn = $model->print();
+        $model = $this->linkmodel("admin_model");
+        $data += $model->getProductList();
         $this->linkview("admin/product_list", $data);
     }
     function UserList()
     {
-        //    $model = $this->linkmodel("getsv");
-        //    $model_fucn = $model->print();
-        $this->linkview("admin/user_list");
+        $data['title'] = "UserList";
+        $model = $this->linkmodel("admin_model");
+        $data += $model->getUserList();
+        $this->linkview("admin/user_list", $data);
     }
-    function ProductEdit()
+    function ProductEdit($para)
     {
-        //    $model = $this->linkmodel("getsv");
-        //    $model_fucn = $model->print();
-        $this->linkview("admin/product_edit");
+        $data['title'] = "ProductEdit";
+        $model = $this->linkmodel("admin_model");
+        $data += $model->get_category();
+        $data['product_detail'] =  $model->get_product_detail_infor($para);
+        if ($_SERVER['REQUEST_METHOD'] === "POST") {
+            $data['result'] = $model->ProductEdit($_POST, $_FILES['ProductImages'], $para);
+            $this->linkview("admin/product_edit", $data);
+        }
+        $this->linkview("admin/product_edit", $data);
+    }
+    function ProductDelete($para){
+        $data['title'] = "ProductList";
+        $model = $this->linkmodel("admin_model");
+        $data += $model->ProductDelete($para);
+        $data += $model->getProductList();
+        $this->linkview("admin/product_list", $data);
     }
     function ProductAdd()
     {
@@ -45,9 +58,8 @@ class admin extends connect_M_V
         $model = $this->linkmodel("admin_model");
         $data += $model->get_category();
         if ($_SERVER['REQUEST_METHOD'] === "POST") {
-            $data['error'] = $model->add_product($_POST,$_FILES['ProductImages']);
+            $data['result'] = $model->add_product($_POST, $_FILES['ProductImages']);
             $this->linkview("admin/product_add", $data);
-            
         }
         $this->linkview("admin/product_add", $data);
     }

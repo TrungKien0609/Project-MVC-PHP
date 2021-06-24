@@ -50,9 +50,9 @@
                     <div class="accout">
                         <?php if (isset($_SESSION["userinfor"])) { ?>
                             <button class="acc-logo">
-                                <p class="user_accout represent"><?php
+                                <p class="user_accout represent" onclick="usertoggle()"><?php
                                                         if (isset($_SESSION['userinfor']['userImage'])) {
-                                                            $link = ROOT . "upload/savedImage/" . $_SESSION['userinfor']['userImage'];
+                                                            $link = ROOT . "upload/UserImage/" . $_SESSION['userinfor']['userImage'];
                                                         ?>
                                         <img src="<?= $link ?>" alt="" style="width: 100%;height:100%">
                                     <?php
@@ -65,7 +65,7 @@
                                     <form method="POST" enctype="multipart/form-data" id="image_form">
                                         <p class="user_accout detail"><?php
                                                                         if (isset($_SESSION['userinfor']['userImage'])) {
-                                                                            $link = ROOT . "upload/savedImage/" . $_SESSION['userinfor']['userImage'];
+                                                                            $link = ROOT . "upload/UserImage/".$_SESSION['userinfor']['userImage'];
                                                                         ?>
                                                 <img src="<?= $link ?>" alt="" style="width: 100%;height:100%">
                                             <?php
@@ -75,7 +75,7 @@
                                             <label for="file"><i class="fas fa-camera"></i></label>
                                         </p>
 
-                                        <input type="file" id="file" style="display: none;" name="image_upload" required>
+                                        <input type="file" id="file" onchange="changeImage()" style="display: none;" name="image_upload" required >
                                     </form>
                                     <p><?php if (isset($_SESSION['userinfor']['username'])) echo $_SESSION['userinfor']['username'] ?></p>
                                     <p><?php if (isset($_SESSION['userinfor']['useremail'])) echo $_SESSION['userinfor']['useremail'] ?></p>

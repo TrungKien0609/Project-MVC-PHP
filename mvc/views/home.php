@@ -22,331 +22,70 @@ require_once "./mvc/views/include/header.php";
 <?php require_once "./mvc/views/include/sidebar.php" ?>
 <!-- cart -->
 <?php require_once "./mvc/views/include/cart.php" ?>
-<!-- featured products -->
-<section class="section featured">
-    <div class="title">
-        <h2><span>/</span> featured</h2>
-    </div>
-    <div class="featured-center section-center">
-        <h2 class="section-loading">
-            loading...
-        </h2>
-        <!-- single product -->
-        <article class="product">
-            <div class="product-container">
-                <img src="<?= ASSETS ?>/images/homeimage.jpg" class="product-img img" alt="" />
-
-                <div class="product-icons">
-                    <a href="<?=ROOT?>detailproduct" class="product-icon">
-                        <i class="fas fa-search"></i>
-                    </a>
-                    <button class="product-cart-btn product-icon" data-id="1">
-                        <i class="fas fa-shopping-cart"></i>
-                    </button>
-                </div>
-            </div>
-            <footer>
-                <p class="product-name">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam,
-                    aperiam!</p>
-                <div class="rating-area">
-                    <div class="rate">
-                        <div class="total-rate">
-                            <input type="radio" name="rate" id="rate1">
-                            <label for="rate1" class="fas fa-star"></label>
-                            <input type="radio" name="rate" id="rate2">
-                            <label for="rate2" class="fas fa-star"></label>
-                            <input type="radio" name="rate" id="rate3">
-                            <label for="rate3" class="fas fa-star"></label>
-                            <input type="radio" name="rate" id="rate4">
-                            <label for="rate4" class="fas fa-star"></label>
-                            <input type="radio" name="rate" id="rate5">
-                            <label for="rate5" class="fas fa-star"></label>
-                        </div>
-                        <div class="avarage-rate" style="width: 95%;">
-                            <input type="radio" name="rate" id="rate1">
-                            <label for="rate1" class="fas fa-star"></label>
-                            <input type="radio" name="rate" id="rate2">
-                            <label for="rate2" class="fas fa-star"></label>
-                            <input type="radio" name="rate" id="rate3">
-                            <label for="rate3" class="fas fa-star"></label>
-                            <input type="radio" name="rate" id="rate4">
-                            <label for="rate4" class="fas fa-star"></label>
-                            <input type="radio" name="rate" id="rate5">
-                            <label for="rate5" class="fas fa-star"></label>
-                        </div>
-                    </div>
-                    <div class="rating-amout">
-                        <p class="number-ratting">( 606 )</p>
+<!-- category products -->
+<?php foreach ($data['CateList'] as $item) { ?>
+    <section class="section category">
+        <div class="title">
+            <h2><span>/</span><?php echo $item ?></h2>
+        </div>
+        <div class="category-center section-center">
+            <h2 class="section-loading">
+                loading...
+            </h2>
+            <?php foreach($data['ProductList'] as $item1){
+                if ($item == $item1['category']){
+            ?>
+            <!-- single product -->
+            <article class="product">
+                <div class="product-container">
+                    <img src="<?= ROOT?>/upload/ProductImages/<?= $item1['image1']?>" class="product-img img" alt="" />
+                    <div class="product-icons">
+                        <a href="<?= ROOT ?>detailproduct/<?= $item1['product_url']?>" class="product-icon">
+                            <i class="fas fa-search"></i>
+                        </a>
+                        <button class="product-cart-btn product-icon" data-id="1">
+                            <i class="fas fa-shopping-cart"></i>
+                        </button>
                     </div>
                 </div>
-                <h4 class="product-price">200.000<span>đ</span></h4>
-            </footer>
-        </article>
-        <article class="product">
-            <div class="product-container">
-                <img src="<?= ASSETS ?>images/homeimage.jpg" class="product-img img" alt="" />
-
-                <div class="product-icons">
-                    <a href="#" class="product-icon">
-                        <i class="fas fa-search"></i>
-                    </a>
-                    <button class="product-cart-btn product-icon" data-id="1">
-                        <i class="fas fa-shopping-cart"></i>
-                    </button>
-                </div>
-            </div>
-            <footer>
-                <p class="product-name">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam,
-                    aperiam!</p>
-                <div class="rating-area">
-                    <div class="rate">
-                        <div class="total-rate">
-                            <input type="radio" name="rate" id="rate1">
-                            <label for="rate1" class="fas fa-star"></label>
-                            <input type="radio" name="rate" id="rate2">
-                            <label for="rate2" class="fas fa-star"></label>
-                            <input type="radio" name="rate" id="rate3">
-                            <label for="rate3" class="fas fa-star"></label>
-                            <input type="radio" name="rate" id="rate4">
-                            <label for="rate4" class="fas fa-star"></label>
-                            <input type="radio" name="rate" id="rate5">
-                            <label for="rate5" class="fas fa-star"></label>
+                <div class="infor">
+                    <p class="product-name"><?= $item1['product_name']?></p>
+                    <div class="rating-area">
+                        <div class="rate">
+                            <div class="total-rate">
+                                <input type="radio" name="rate" id="rate1">
+                                <label for="rate1" class="fas fa-star"></label>
+                                <input type="radio" name="rate" id="rate2">
+                                <label for="rate2" class="fas fa-star"></label>
+                                <input type="radio" name="rate" id="rate3">
+                                <label for="rate3" class="fas fa-star"></label>
+                                <input type="radio" name="rate" id="rate4">
+                                <label for="rate4" class="fas fa-star"></label>
+                                <input type="radio" name="rate" id="rate5">
+                                <label for="rate5" class="fas fa-star"></label>
+                            </div>
+                            <div class="avarage-rate" style="width: 95%;">
+                                <input type="radio" name="rate" id="rate1">
+                                <label for="rate1" class="fas fa-star"></label>
+                                <input type="radio" name="rate" id="rate2">
+                                <label for="rate2" class="fas fa-star"></label>
+                                <input type="radio" name="rate" id="rate3">
+                                <label for="rate3" class="fas fa-star"></label>
+                                <input type="radio" name="rate" id="rate4">
+                                <label for="rate4" class="fas fa-star"></label>
+                                <input type="radio" name="rate" id="rate5">
+                                <label for="rate5" class="fas fa-star"></label>
+                            </div>
                         </div>
-                        <div class="avarage-rate" style="width: 45%;">
-                            <input type="radio" name="rate" id="rate1">
-                            <label for="rate1" class="fas fa-star"></label>
-                            <input type="radio" name="rate" id="rate2">
-                            <label for="rate2" class="fas fa-star"></label>
-                            <input type="radio" name="rate" id="rate3">
-                            <label for="rate3" class="fas fa-star"></label>
-                            <input type="radio" name="rate" id="rate4">
-                            <label for="rate4" class="fas fa-star"></label>
-                            <input type="radio" name="rate" id="rate5">
-                            <label for="rate5" class="fas fa-star"></label>
+                        <div class="rating-amout">
+                            <p class="number-ratting">( 606 )</p>
                         </div>
                     </div>
-                    <div class="rating-amout">
-                        <p class="number-ratting">( 606 )</p>
-                    </div>
+                    <h4 class="product-price"><?= $item1['price']?><span>đ</span></h4>
                 </div>
-                <h4 class="product-price">200.000<span>đ</span></h4>
-            </footer>
-        </article>
-        <article class="product">
-            <div class="product-container">
-                <img src="<?= ASSETS ?>images/homeimage.jpg" class="product-img img" alt="" />
-
-                <div class="product-icons">
-                    <a href="#" class="product-icon">
-                        <i class="fas fa-search"></i>
-                    </a>
-                    <button class="product-cart-btn product-icon" data-id="1">
-                        <i class="fas fa-shopping-cart"></i>
-                    </button>
-                </div>
-            </div>
-            <footer>
-                <p class="product-name">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam,
-                    aperiam!</p>
-                <div class="rating-area">
-                    <div class="rate">
-                        <div class="total-rate">
-                            <input type="radio" name="rate" id="rate1">
-                            <label for="rate1" class="fas fa-star"></label>
-                            <input type="radio" name="rate" id="rate2">
-                            <label for="rate2" class="fas fa-star"></label>
-                            <input type="radio" name="rate" id="rate3">
-                            <label for="rate3" class="fas fa-star"></label>
-                            <input type="radio" name="rate" id="rate4">
-                            <label for="rate4" class="fas fa-star"></label>
-                            <input type="radio" name="rate" id="rate5">
-                            <label for="rate5" class="fas fa-star"></label>
-                        </div>
-                        <div class="avarage-rate" style="width: 70%;">
-                            <input type="radio" name="rate" id="rate1">
-                            <label for="rate1" class="fas fa-star"></label>
-                            <input type="radio" name="rate" id="rate2">
-                            <label for="rate2" class="fas fa-star"></label>
-                            <input type="radio" name="rate" id="rate3">
-                            <label for="rate3" class="fas fa-star"></label>
-                            <input type="radio" name="rate" id="rate4">
-                            <label for="rate4" class="fas fa-star"></label>
-                            <input type="radio" name="rate" id="rate5">
-                            <label for="rate5" class="fas fa-star"></label>
-                        </div>
-                    </div>
-                    <div class="rating-amout">
-                        <p class="number-ratting">( 606 )</p>
-                    </div>
-                </div>
-                <h4 class="product-price">200.000<span>đ</span></h4>
-            </footer>
-        </article>
-
-    </div>
-</section>
-<section class="section featured">
-    <div class="title">
-        <h2><span>/</span>Best seller</h2>
-    </div>
-    <div class="featured-center section-center">
-        <h2 class="section-loading">
-            loading...
-        </h2>
-        <!-- single product -->
-        <article class="product">
-            <div class="product-container">
-                <img src="<?= ASSETS ?>images/homeimage.jpg" class="product-img img" alt="" />
-
-                <div class="product-icons">
-                    <a href="#" class="product-icon">
-                        <i class="fas fa-search"></i>
-                    </a>
-                    <button class="product-cart-btn product-icon" data-id="1">
-                        <i class="fas fa-shopping-cart"></i>
-                    </button>
-                </div>
-            </div>
-            <footer>
-                <p class="product-name">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam,
-                    aperiam!</p>
-                <div class="rating-area">
-                    <div class="rate">
-                        <div class="total-rate">
-                            <input type="radio" name="rate" id="rate1">
-                            <label for="rate1" class="fas fa-star"></label>
-                            <input type="radio" name="rate" id="rate2">
-                            <label for="rate2" class="fas fa-star"></label>
-                            <input type="radio" name="rate" id="rate3">
-                            <label for="rate3" class="fas fa-star"></label>
-                            <input type="radio" name="rate" id="rate4">
-                            <label for="rate4" class="fas fa-star"></label>
-                            <input type="radio" name="rate" id="rate5">
-                            <label for="rate5" class="fas fa-star"></label>
-                        </div>
-                        <div class="avarage-rate" style="width: 95%;">
-                            <input type="radio" name="rate" id="rate1">
-                            <label for="rate1" class="fas fa-star"></label>
-                            <input type="radio" name="rate" id="rate2">
-                            <label for="rate2" class="fas fa-star"></label>
-                            <input type="radio" name="rate" id="rate3">
-                            <label for="rate3" class="fas fa-star"></label>
-                            <input type="radio" name="rate" id="rate4">
-                            <label for="rate4" class="fas fa-star"></label>
-                            <input type="radio" name="rate" id="rate5">
-                            <label for="rate5" class="fas fa-star"></label>
-                        </div>
-                    </div>
-                    <div class="rating-amout">
-                        <p class="number-ratting">( 606 )</p>
-                    </div>
-                </div>
-                <h4 class="product-price">200.000<span>đ</span></h4>
-            </footer>
-        </article>
-        <article class="product">
-            <div class="product-container">
-                <img src="<?= ASSETS ?>images/homeimage.jpg" class="product-img img" alt="" />
-
-                <div class="product-icons">
-                    <a href="#" class="product-icon">
-                        <i class="fas fa-search"></i>
-                    </a>
-                    <button class="product-cart-btn product-icon" data-id="1">
-                        <i class="fas fa-shopping-cart"></i>
-                    </button>
-                </div>
-            </div>
-            <footer>
-                <p class="product-name">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam,
-                    aperiam!</p>
-                <div class="rating-area">
-                    <div class="rate">
-                        <div class="total-rate">
-                            <input type="radio" name="rate" id="rate1">
-                            <label for="rate1" class="fas fa-star"></label>
-                            <input type="radio" name="rate" id="rate2">
-                            <label for="rate2" class="fas fa-star"></label>
-                            <input type="radio" name="rate" id="rate3">
-                            <label for="rate3" class="fas fa-star"></label>
-                            <input type="radio" name="rate" id="rate4">
-                            <label for="rate4" class="fas fa-star"></label>
-                            <input type="radio" name="rate" id="rate5">
-                            <label for="rate5" class="fas fa-star"></label>
-                        </div>
-                        <div class="avarage-rate" style="width: 45%;">
-                            <input type="radio" name="rate" id="rate1">
-                            <label for="rate1" class="fas fa-star"></label>
-                            <input type="radio" name="rate" id="rate2">
-                            <label for="rate2" class="fas fa-star"></label>
-                            <input type="radio" name="rate" id="rate3">
-                            <label for="rate3" class="fas fa-star"></label>
-                            <input type="radio" name="rate" id="rate4">
-                            <label for="rate4" class="fas fa-star"></label>
-                            <input type="radio" name="rate" id="rate5">
-                            <label for="rate5" class="fas fa-star"></label>
-                        </div>
-                    </div>
-                    <div class="rating-amout">
-                        <p class="number-ratting">( 606 )</p>
-                    </div>
-                </div>
-                <h4 class="product-price">200.000<span>đ</span></h4>
-            </footer>
-        </article>
-        <article class="product">
-            <div class="product-container">
-                <img src="<?= ASSETS ?>images/homeimage.jpg" class="product-img img" alt="" />
-
-                <div class="product-icons">
-                    <a href="#" class="product-icon">
-                        <i class="fas fa-search"></i>
-                    </a>
-                    <button class="product-cart-btn product-icon" data-id="1">
-                        <i class="fas fa-shopping-cart"></i>
-                    </button>
-                </div>
-            </div>
-            <footer>
-                <p class="product-name">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam,
-                    aperiam!</p>
-                <div class="rating-area">
-                    <div class="rate">
-                        <div class="total-rate">
-                            <input type="radio" name="rate" id="rate1">
-                            <label for="rate1" class="fas fa-star"></label>
-                            <input type="radio" name="rate" id="rate2">
-                            <label for="rate2" class="fas fa-star"></label>
-                            <input type="radio" name="rate" id="rate3">
-                            <label for="rate3" class="fas fa-star"></label>
-                            <input type="radio" name="rate" id="rate4">
-                            <label for="rate4" class="fas fa-star"></label>
-                            <input type="radio" name="rate" id="rate5">
-                            <label for="rate5" class="fas fa-star"></label>
-                        </div>
-                        <div class="avarage-rate" style="width: 70%;">
-                            <input type="radio" name="rate" id="rate1">
-                            <label for="rate1" class="fas fa-star"></label>
-                            <input type="radio" name="rate" id="rate2">
-                            <label for="rate2" class="fas fa-star"></label>
-                            <input type="radio" name="rate" id="rate3">
-                            <label for="rate3" class="fas fa-star"></label>
-                            <input type="radio" name="rate" id="rate4">
-                            <label for="rate4" class="fas fa-star"></label>
-                            <input type="radio" name="rate" id="rate5">
-                            <label for="rate5" class="fas fa-star"></label>
-                        </div>
-                    </div>
-                    <div class="rating-amout">
-                        <p class="number-ratting">( 606 )</p>
-                    </div>
-                </div>
-                <h4 class="product-price">200.000<span>đ</span></h4>
-            </footer>
-        </article>
-    </div>
-    <a href="products.php" class="btn ">
-        all products
-    </a>
-</section>
-<?php require_once "./mvc/views/include/footer.php"?>
+            </article>
+            <?php }}?>
+        </div>
+    </section>
+<?php } ?>
+<?php require_once "./mvc/views/include/footer.php" ?>

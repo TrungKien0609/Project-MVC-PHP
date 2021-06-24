@@ -20,10 +20,9 @@ closeCartBtn.addEventListener('click', () => {
   cartOverlay.classList.remove('show');
 });
 
-const file = document.getElementById("file");
 const image_form = document.getElementById("image_form");
 const upload_image_error = document.getElementById("upload_error");
-file.addEventListener("change", function () {
+function changeImage() {
   let xhr = new XMLHttpRequest(); //creating XML Oject
   xhr.open("POST", "http://localhost/MVC_Kien/ajax/check_upload_image", true);
   xhr.onload = function () {
@@ -43,15 +42,15 @@ file.addEventListener("change", function () {
   // Xhr.requestHeader("kiểu dữ liệu gửi vd Json thì dùng Content-type","aplicaiton/x-www-form-urlencoded") thông qua x-www-form-urlencoded( bị giới hạn dung lượng data khi gửi)
   // muốn không bị giới hạn thì dùng aplicaiton/multipart/form-data
   xhr.send(formData);
-})
+}
 
-const user_btn = document.querySelector(".acc-logo .represent");
 const dashboard_user = document.querySelector(".acc-logo .manage_accout");
-user_btn.addEventListener("click", function () {
+function usertoggle() {
   if (dashboard_user.classList.contains("active")) {
 
     dashboard_user.classList.remove("active");
   }
   else
     dashboard_user.classList.add("active");
-})
+}
+

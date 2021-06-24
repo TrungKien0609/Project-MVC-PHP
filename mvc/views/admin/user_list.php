@@ -15,37 +15,26 @@
                     <tr align="center">
                         <th>ID</th>
                         <th>Username</th>
-                        <th>Level</th>
-                        <th>Status</th>
+                        <th>Email</th>
+                        <th>Rank</th>
                         <th>Delete</th>
                         <th>Edit</th>
                     </tr>
                 </thead>
                 <tbody>
+                <?php if(isset($data['userList'])){
+                     $i=1;
+                     foreach($data['userList'] as $item){
+                    ?>
                     <tr class="odd gradeX" align="center">
-                        <td>1</td>
-                        <td>quoctuan</td>
-                        <td>Superadmin</td>
-                        <td>Hiện</td>
-                        <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="#"> Delete</a></td>
-                        <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="#">Edit</a></td>
+                        <td><?php echo $i;$i++;?></td>
+                        <td><?php echo $item['name']?></td>
+                        <td><?php echo $item['email']?></td>
+                        <td><?php echo $item['rank']?></td>
+                        <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="<?php echo ROOT ?>admin/UserDelete/<?php echo $item['url_address']?>"> Delete</a></td>
+                        <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="<?php echo ROOT ?>admin/UserEdit/<?php echo $item['url_address']?>">Edit</a></td>
                     </tr>
-                    <tr class="even gradeC" align="center">
-                        <td>2</td>
-                        <td>kutun</td>
-                        <td>Admin</td>
-                        <td>Ẩn</td>
-                        <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="#"> Delete</a></td>
-                        <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="#">Edit</a></td>
-                    </tr>
-                    <tr class="odd gradeX" align="center">
-                        <td>3</td>
-                        <td>kuteo</td>
-                        <td>Member</td>
-                        <td>Hiện</td>
-                        <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="#"> Delete</a></td>
-                        <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="#">Edit</a></td>
-                    </tr>
+                    <?php }}?>
                 </tbody>
             </table>
         </div>

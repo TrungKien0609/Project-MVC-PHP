@@ -11,7 +11,7 @@
             </div>
             <!-- /.col-lg-12 -->
             <div class="col-lg-7" style="padding-bottom:120px">
-                <p style="color: red; lineheight:1rem"><?php if(isset($data['error'])) echo $data['error'];?></p>
+                <p style="color:red; lineheight:1rem; font-size:2rem"><?php if(isset($data['result']) && $data['result'] != "complete") echo $data['result'];?></p>
                 <form method="POST" enctype="multipart/form-data">
                     <div class="form-group">
                         <label>Name</label>
@@ -74,5 +74,12 @@
     <!-- /.container-fluid -->
 </div>
 <!-- /#page-wrapper -->
+<script>
+        window.onload = function(){
+            <?php if(isset($data['result']) && $data['result'] == "complete"){ ?>
+                alert("Completed add product");
+            <?php }?>
+        }
+</script>
 <script src="<?php echo ADMIN ?>js/add_product.js"></script>
 <?php require_once "./mvc/views/admin/Ad_include/footer.php" ?>
